@@ -13,7 +13,9 @@ type RoastResult = {
   error?: string;
 };
 
-export async function roastPicture(file: File): Promise<RoastResult> {
+type modeType = "roast" | "compliment" | "random" | "ai_decide";
+
+export async function roastPicture(file: File, mode?: modeType): Promise<RoastResult> {
   try {
     if (!file.type.startsWith("image/")) {
       throw new Error("Please provide a valid image file.");
@@ -34,7 +36,7 @@ export async function roastPicture(file: File): Promise<RoastResult> {
       functionId: FUNCTION_ID,
       body: "",                 // no body for GET
       async: false,             // run synchronously
-      xpath: `/?bucketId=${BUCKET_ID}&fileId=${fileId}&mode=roast`,
+      xpath: `/?bucketId=${BUCKET_ID}&fileId=${fileId}&mode=${mode || "roast"}`,
       method: ExecutionMethod.GET,
       headers: { "x-api-key": CLIENT_API_KEY }
     });
@@ -55,7 +57,7 @@ export async function roastPicture(file: File): Promise<RoastResult> {
       }
     });
 
-    return { ok: true, reply: data.reply };
+    return { ok: true, reply: data.reply, };
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error occurred";
     return { ok: false, error: message };

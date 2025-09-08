@@ -1,5 +1,11 @@
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import OpenAI from "openai";
-import { ROAST_PROMPT } from "./constants.js";
+import {
+  ROAST_PROMPT,
+  COMPLIMENT_PROMPT,
+  AI_DECIDE_PROMPT,
+} from "./constants.js";
 
 export default async (context) => {
   const { req, res, error } = context;
@@ -57,11 +63,12 @@ export default async (context) => {
   if (!apiKey) return sendJSON({ error: "Missing OPENAI_API_KEY" }, 500);
 
   const sys =
-    {
-      roast: ROAST_PROMPT,
-      compliment: "You are a warm compliment bot. Be specific. Under 25 words.",
-      random: "Choose roast or compliment based on content. Under 25 words.",
-    }[mode] || "Be concise.";
+  {
+    roast: ROAST_PROMPT,
+    compliment: COMPLIMENT_PROMPT,
+    random: Math.random() < 0.5 ? ROAST_PROMPT : COMPLIMENT_PROMPT,
+    ai_decide: AI_DECIDE_PROMPT,
+  }[mode] || "Be concise.";
 
   try {
     const client = new OpenAI({ apiKey });
