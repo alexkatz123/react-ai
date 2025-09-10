@@ -5,8 +5,8 @@ import { Query } from "node-appwrite";
 import HistoryLayoutView from "@/modules/history/ui/views/HistoryLayoutView";
 import type { HistoryDoc } from "@/modules/history/types";
 
-const DATABASE_ID = process.env.APPWRITE_DATABASE_ID!;
-const COLLECTION_ID = process.env.APPWRITE_COLLECTION_ID!;
+const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
 export default async function HistoryLayout({
   children,

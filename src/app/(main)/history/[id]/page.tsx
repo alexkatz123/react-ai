@@ -6,8 +6,8 @@ import HistoryDetailView from "@/modules/history/ui/views/HistoryDetailView";
 import { buildFileViewUrl } from "@/modules/history/utils/files";
 import type { HistoryDoc } from "@/modules/history/types";
 
-const DATABASE_ID = process.env.APPWRITE_DATABASE_ID!;
-const COLLECTION_ID = process.env.APPWRITE_COLLECTION_ID!;
+const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
 export default async function HistoryDetailPage(
   props: { params: Promise<{ id: string }> }

@@ -20,8 +20,8 @@ function required(name: string) {
 
 /** ---- Appwrite client (server) ---- */
 const client = new Client()
-  .setEndpoint(process.env.APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1")
-  .setProject(required("APPWRITE_PROJECT"))
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1")
+  .setProject(required("NEXT_PUBLIC_APPWRITE_PROJECT"))
   .setKey(required("APPWRITE_API_KEY"));
 
 const storage = new Storage(client);
@@ -29,10 +29,10 @@ const functions = new Functions(client);
 const databases = new Databases(client);
 
 /** ---- Config ---- */
-const BUCKET_ID = required("APPWRITE_BUCKET_ID");
-const FUNCTION_ID = required("APPWRITE_FUNCTION_ID");
-const DATABASE_ID = required("APPWRITE_DATABASE_ID");
-const COLLECTION_ID = required("APPWRITE_COLLECTION_ID");
+const BUCKET_ID = required("NEXT_PUBLIC_APPWRITE_BUCKET_ID");
+const FUNCTION_ID = required("NEXT_PUBLIC_APPWRITE_FUNCTION_ID");
+const DATABASE_ID = required("NEXT_PUBLIC_APPWRITE_DATABASE_ID");
+const COLLECTION_ID = required("NEXT_PUBLIC_APPWRITE_COLLECTION_ID");
 const CLIENT_API_KEY = required("ROAST_CLIENT_API_KEY");
 
 /** Types */
