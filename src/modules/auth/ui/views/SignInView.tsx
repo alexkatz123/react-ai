@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
@@ -31,12 +32,19 @@ export function SignInView({ action }: { action: (formData: FormData) => void })
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(values: SignInValues) {
+  async function onSubmit(values: SignInValues) {
     const fd = new FormData();
     fd.append("email", values.email);
     fd.append("password", values.password);
-    action(fd);
+    try {
+      setLoading(true);
+      await action(fd);
+    } finally {
+      // In most cases a redirect happens; this is a safe fallback
+      setLoading(false);
+    }
   }
 
   return (
@@ -88,7 +96,9 @@ export function SignInView({ action }: { action: (formData: FormData) => void })
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">Sign In</Button>
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign In"}
+            </Button>
           </form>
         </Form>
         <p className="mt-4 text-sm text-muted-foreground text-center">

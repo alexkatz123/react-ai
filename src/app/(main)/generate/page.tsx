@@ -1,4 +1,4 @@
-// src\app\(main)\roast\page.tsx
+// src/app/(main)/generate/page.tsx
 import "server-only";
 import RoastView from "@/modules/roast/ui/views/roast-view";
 import { roastPicture, type Mode, type RoastResult as ServerRoastResult } from "@/lib/roast";
@@ -28,3 +28,4 @@ export default function Page() {
 
   return <RoastView roastAction={roastAction} />;
 }
+

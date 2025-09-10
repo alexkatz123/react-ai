@@ -20,12 +20,12 @@ async function signInWithEmail(formData: FormData) {
     secure: true,
   });
 
-  redirect("/testauth");
+  redirect("/generate");
 }
 
 export default async function SignInPage() {
   const user = await getLoggedInUser();
-  if (user) redirect("/testauth");
+  if (user) redirect("/generate");
 
   return (
     <AuthLayout mode="signin">
@@ -33,3 +33,4 @@ export default async function SignInPage() {
     </AuthLayout>
   );
 }
+

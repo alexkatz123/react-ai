@@ -1,0 +1,1 @@
+export type BadgeVariant = "roast" | "compliment" | "random" | "aiDecide";

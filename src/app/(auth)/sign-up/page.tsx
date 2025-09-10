@@ -23,12 +23,12 @@ async function signUpWithEmail(formData: FormData) {
     secure: true,
   });
 
-  redirect("/testauth");
+  redirect("/generate");
 }
 
 export default async function SignUpPage() {
   const user = await getLoggedInUser();
-  if (user) redirect("/testauth");
+  if (user) redirect("/generate");
 
   return (
     <AuthLayout mode="signup">
@@ -36,3 +36,4 @@ export default async function SignUpPage() {
     </AuthLayout>
   );
 }
+

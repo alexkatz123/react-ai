@@ -41,23 +41,7 @@ export function LandingView(
 ) {
   return (
     <>
-      {/* Top nav */}
-      <nav className="flex items-center justify-between px-4 py-3 bg-accent sticky top-0 z-40">
-        <div className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Logo" width={34} height={34} />
-          <h1 className="text-base sm:text-lg font-semibold text-accent-foreground">
-            React AI
-          </h1>
-        </div>
-       <div className="flex items-center gap-3">
-        <ThemeToggle />
-        {user && (
-          <Link href="/testauth">
-            <Button size="sm" variant="outline">Account</Button>
-          </Link>
-        )}
-      </div>
-      </nav>
+      {/* Navbar is provided by (main)/layout */}
 
       <main className="min-h-[calc(100vh-56px)]">
         {/* Hero */}
@@ -80,7 +64,7 @@ export function LandingView(
                 </p>
 
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <Link href="/roast">
+                  <Link href="/generate">
                     <Button size="lg" className="gap-2">
                       Get Started <ArrowRight className="h-4 w-4" />
                     </Button>
@@ -140,7 +124,7 @@ export function LandingView(
                   </div>
 
                   <div className="pt-2">
-                    <Link href="/roast">
+                    <Link href="/generate">
                       <Button className="w-full">Open the App</Button>
                     </Link>
                   </div>
@@ -263,7 +247,7 @@ export function LandingView(
                 </p>
               </div>
               <div className="flex gap-3 w-full md:w-auto">
-                <Link href="/roast" className="w-full md:w-auto">
+                <Link href="/generate" className="w-full md:w-auto">
                   <Button size="lg" className="w-full md:w-auto">
                     Open the App
                   </Button>
@@ -287,7 +271,7 @@ export function LandingView(
             <span>Roast/Compliments Bot</span>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/roast" className="hover:underline">Open App</Link>
+            <Link href="/generate" className="hover:underline">Open App</Link>
             <a href="#how" className="hover:underline">How it works</a>
           </div>
         </div>
@@ -295,3 +279,4 @@ export function LandingView(
     </>
   );
 }
+
