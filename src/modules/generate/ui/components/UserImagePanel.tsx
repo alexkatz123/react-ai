@@ -13,8 +13,8 @@ type Props<T extends FieldValues = RoastFormValues> = {
   imageUrl: string | null;
   loading: boolean;
   dzBlockClick: boolean;
-  onPick: () => void;           // opens hidden input
-  onDropped: (f: File) => void; // sets form value + clears state
+  onPick: () => void;
+  onDropped: (f: File) => void;
   disabled?: boolean;
 };
 

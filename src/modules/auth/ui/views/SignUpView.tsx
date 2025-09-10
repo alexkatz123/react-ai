@@ -149,6 +149,11 @@ export function SignUpView({ action }: { action: (formData: FormData) => void })
             Sign In
           </Link>
         </p>
+        <div className="mt-3 flex justify-center">
+          <Link href="/generate">
+            <Button variant="ghost" className="text-sm">Prefer to stay logged out</Button>
+          </Link>
+        </div>
       </CardContent>
     </Card>
   );

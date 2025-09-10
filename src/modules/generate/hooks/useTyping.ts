@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-/** Typewriter effect tuned for sentences. */
 export function useTypingEffect(source: string) {
   const [typed, setTyped] = useState("");
   const [completed, setCompleted] = useState(false);
@@ -17,7 +16,7 @@ export function useTypingEffect(source: string) {
     let i = 0;
     let cancelled = false;
     const base = 22;
-    const punct = 100;
+    const punct = 10;
 
     const tick = () => {
       if (cancelled) return;
@@ -28,7 +27,7 @@ export function useTypingEffect(source: string) {
         return;
       }
       const ch = source[i - 1];
-      const delay = /[.,!?;:]/.test(ch) ? base + punct : base;
+      const delay = /[.,!?;:]/.test(ch) ? punct : base;
       setTimeout(tick, delay);
     };
 

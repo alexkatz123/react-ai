@@ -24,14 +24,14 @@ export default function HistoryEmptyView() {
         </CardHeader>
         <CardContent>
           <div className="mx-auto max-w-2xl text-center space-y-6">
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
               <Link href="/generate">
-                <Button className="gap-2">
+                <Button className="gap-2 w-full sm:w-auto">
                   <ImagePlus className="h-4 w-4" /> New Roast / Compliment
                 </Button>
               </Link>
               <Link href="/history">
-                <Button variant="outline">Refresh History</Button>
+                <Button variant="outline" className="w-full sm:w-auto">Refresh History</Button>
               </Link>
             </div>
 

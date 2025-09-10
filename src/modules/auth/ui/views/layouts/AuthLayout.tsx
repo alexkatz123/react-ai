@@ -7,14 +7,13 @@ import { Button } from "@/components/ui/button";
 
 export function AuthLayout({
   children,
-  mode, // "signin" or "signup"
+  mode,
 }: {
   children: React.ReactNode;
   mode: "signin" | "signup";
 }) {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Navbar (same style as main app) */}
       <nav className="flex items-center justify-between px-4 py-3 bg-accent sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <Image src="/logo.svg" alt="Logo" width={34} height={34} />
@@ -37,7 +36,6 @@ export function AuthLayout({
         </div>
       </nav>
 
-      {/* Main content */}
       <main className="flex flex-1 items-center justify-center px-4 py-8">
         <div className="w-full max-w-md">{children}</div>
       </main>

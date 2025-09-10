@@ -8,7 +8,7 @@ const client = new Client()
   .setProject(
     process.env.NEXT_PUBLIC_APPWRITE_PROJECT !
   )
-  .setKey(process.env.APPWRITE_API_KEY!); // server-side only
+  .setKey(process.env.APPWRITE_API_KEY!);
 
 export const account = new Account(client);
 export const databases = new Databases(client);

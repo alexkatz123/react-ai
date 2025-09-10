@@ -81,5 +81,3 @@ export default function HistoryLayoutView({ docs, children }: Props) {
     </>
   );
 }
-
-// No local topbar; navbar handles trigger and layout.

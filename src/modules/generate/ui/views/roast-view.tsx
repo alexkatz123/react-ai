@@ -36,7 +36,7 @@ export default function RoastView({ roastAction }: Props) {
   const [dzBlockClick, setDzBlockClick] = useState(false);
 
   const [limit, setLimit] = useState<LimitState>(() => checkLimit());
-  const [mounted, setMounted] = useState(false); // ✅ hydration-safe
+  const [mounted, setMounted] = useState(false);
   const countdown = useCountdown(limit.resetAt);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function RoastView({ roastAction }: Props) {
       fd.append("mode", values.mode);
 
       const res = await roastAction(fd);
-      setLimit(checkLimit(true)); // ✅ record usage
+      setLimit(checkLimit(true));
 
       if (res.ok && res.reply) setReply(res.reply);
       else setError(res.error || "Something went wrong");
@@ -113,7 +113,7 @@ export default function RoastView({ roastAction }: Props) {
       <div className="mx-auto w-full max-w-7xl lg:h-full flex flex-col lg:min-h-0">
         <Card className="lg:flex-1 flex flex-col lg:min-h-0">
           <CardHeader className="bg-gradient-to-r from-primary/10 via-transparent to-transparent">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-6 sm:gap-4">
               <div className="mt-3 flex-1">
                 <CardTitle className="text-3xl">ReactAI</CardTitle>
                 <CardDescription className="text-base">
@@ -136,21 +136,21 @@ export default function RoastView({ roastAction }: Props) {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col gap-4 lg:flex-1 lg:min-h-0"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                   <ModeSelector
                     value={currentMode}
                     onChange={(m) =>
                       form.setValue("mode", m, { shouldDirty: true })
                     }
                     disabled={mounted ? loading || !limit.allowed : false}
-                    className="w-48 justify-between"
+                    className="w-full sm:w-48 justify-between"
                   />
 
-                  <div className="ml-auto flex items-center gap-2">
+                  <div className="sm:ml-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     <Button
                       type="button"
                       variant={completed ? "ghost" : "outline"}
-                      className="gap-2"
+                      className="gap-2 w-full sm:w-auto"
                       onClick={() => (completed ? hardReset() : openPicker())}
                       disabled={mounted ? loading || !limit.allowed : false}
                     >
@@ -186,7 +186,7 @@ export default function RoastView({ roastAction }: Props) {
 
                     <Button
                       type="submit"
-                      className="gap-2"
+                      className="gap-2 w-full sm:w-auto"
                       disabled={mounted ? !canGenerate : false}
                     >
                       {loading ? (

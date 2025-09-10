@@ -19,7 +19,6 @@ export default function MainNavbar({ isLoggedIn }: Props) {
   const onHistory = pathname === "/history" || pathname.startsWith("/history/");
   const { isMobile, state } = useSidebar();
   const shrinkForSidebar = onHistory && !isMobile && state === "expanded";
-  // Keep navbar full-width; history sidebar does not shrink it anymore.
 
   return (
     <nav
@@ -31,7 +30,7 @@ export default function MainNavbar({ isLoggedIn }: Props) {
     >
       <div className="flex items-center gap-2">
         {onHistory && <SidebarTrigger className="mr-1" />}
-        <Link href="/generate" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image src="/logo.svg" alt="Logo" width={30} height={30} />
           <span className="text-base sm:text-lg font-semibold text-accent-foreground">React AI</span>
         </Link>
@@ -43,7 +42,7 @@ export default function MainNavbar({ isLoggedIn }: Props) {
             <Button size="sm">History</Button>
           </Link>
         )}
-        {onHistory ? (
+        {onHistory && !isMobile ? (
           <Link href="/generate">
             <Button size="sm" className="gap-2">Create New</Button>
           </Link>

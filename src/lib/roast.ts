@@ -9,16 +9,14 @@ import {
   ExecutionMethod,
 } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
-import { getLoggedInUser } from "@/lib/auth"; // <- you'll use your existing auth util
+import { getLoggedInUser } from "@/lib/auth";
 
-/** Helper to enforce required envs */
 function required(name: string) {
   const v = process.env[name];
   if (!v) throw new Error(`Missing required env: ${name}`);
   return v;
 }
 
-/** ---- Appwrite client (server) ---- */
 const client = new Client()
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || "https://cloud.appwrite.io/v1")
   .setProject(required("NEXT_PUBLIC_APPWRITE_PROJECT"))
@@ -28,14 +26,12 @@ const storage = new Storage(client);
 const functions = new Functions(client);
 const databases = new Databases(client);
 
-/** ---- Config ---- */
 const BUCKET_ID = required("NEXT_PUBLIC_APPWRITE_BUCKET_ID");
 const FUNCTION_ID = required("NEXT_PUBLIC_APPWRITE_FUNCTION_ID");
 const DATABASE_ID = required("NEXT_PUBLIC_APPWRITE_DATABASE_ID");
 const COLLECTION_ID = required("NEXT_PUBLIC_APPWRITE_COLLECTION_ID");
 const CLIENT_API_KEY = required("ROAST_CLIENT_API_KEY");
 
-/** Types */
 export type RoastResult =
   | { ok: true; reply: string }
   | { ok: false; error: string };
@@ -58,7 +54,6 @@ export async function roastPicture(
   mode: Mode = "roast"
 ): Promise<RoastResult> {
   try {
-    // Normalize input
     let inputFile: Awaited<ReturnType<typeof InputFile.fromBuffer>>;
     if ("file" in input) {
       const f = input.file;
@@ -78,7 +73,6 @@ export async function roastPicture(
       );
     }
 
-    // Upload file
     const fileId = ID.unique();
     await storage.createFile({
       bucketId: BUCKET_ID,
@@ -86,7 +80,6 @@ export async function roastPicture(
       file: inputFile,
     });
 
-    // Execute function
     const xpath = `/?bucketId=${encodeURIComponent(
       BUCKET_ID
     )}&fileId=${encodeURIComponent(fileId)}&mode=${encodeURIComponent(mode)}`;
@@ -104,7 +97,6 @@ export async function roastPicture(
     try {
       parsed = JSON.parse(exec.responseBody || "{}") as FunctionExecResponse;
     } catch {
-      /* ignore */
     }
 
     if (!parsed.ok || typeof parsed.reply !== "string" || !parsed.reply.trim()) {
@@ -114,20 +106,16 @@ export async function roastPicture(
       };
     }
 
-    // --- Check logged in user ---
     const user = await getLoggedInUser();
 
     if (!user) {
-      // Not logged in → cleanup file, don't save
       try {
         await storage.deleteFile(BUCKET_ID, fileId);
       } catch {
-        /* ignore */
       }
       return { ok: true, reply: parsed.reply };
     }
 
-    // Logged in → save doc
     await databases.createDocument({
       databaseId: DATABASE_ID,
       collectionId: COLLECTION_ID,

@@ -152,24 +152,6 @@
             ]
         }
     ],
-    "sites": [
-        {
-            "$id": "###REPLACE_SITE_ID###",
-            "name": "roast-compliment-bot",
-            "enabled": true,
-            "logging": true,
-            "framework": "nextjs",
-            "timeout": 30,
-            "installCommand": "npm install",
-            "buildCommand": "npm run build",
-            "outputDirectory": "./.next",
-            "specification": "s-4vcpu-4gb",
-            "buildRuntime": "node-22",
-            "adapter": "ssr",
-            "fallbackFile": "",
-            "path": "D:\\appwrite sites hackathon\\roast-compliment-bot"
-        }
-    ],
     "buckets": [
         {
             "$id": "###REPLACE_BUCKET_ID###",

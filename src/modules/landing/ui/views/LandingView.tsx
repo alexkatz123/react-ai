@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -37,7 +36,6 @@ import { ModePill } from "../components/ModePill";
 import { StepDot } from "../components/StepDot";
 
 export function LandingView(
-  { user }: { user: { email: string; name: string } | null }
 ) {
   return (
     <>

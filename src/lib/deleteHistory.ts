@@ -9,21 +9,18 @@ const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID!;
 
 export async function deleteHistory(fileId: string, docId: string) {
-  // delete file
   try {
     await storage.deleteFile(BUCKET_ID, fileId);
   } catch (e) {
     console.error("Error deleting file:", e);
   }
 
-  // delete document
   try {
     await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, docId);
   } catch (e) {
     console.error("Error deleting document:", e);
   }
 
-  // refresh and redirect
   revalidatePath("/history");
   redirect("/history");
 }

@@ -12,18 +12,16 @@ type Props = {
 
 export default function ModeBadgeInfo({ mode, limit, countdown, mounted }: Props) {
   return (
-    <div className="flex flex-col items-end gap-2 max-w-sm text-xs">
-      {/* Mode explainer */}
+    <div className="flex flex-col items-end gap-1 sm:gap-2 max-w-[200px] sm:max-w-sm text-[11px] sm:text-xs leading-tight">
       <div
-        className={`rounded-md border ${modeMeta[mode].border} bg-muted/40 px-3 py-2 text-muted-foreground`}
+        className={`w-full rounded-md border ${modeMeta[mode].border} bg-muted/40 px-2 py-1 sm:px-3 sm:py-2 text-muted-foreground`}
       >
         <span className="font-medium text-foreground">
           {modeMeta[mode].label}:
         </span>{" "}
-        {modeMeta[mode].desc}
+        <span className="block sm:inline whitespace-normal">{modeMeta[mode].desc}</span>
       </div>
 
-      {/* Tries + countdown */}
       {mounted ? (
         limit.resetAt && (
           <div className="text-muted-foreground">
@@ -39,7 +37,6 @@ export default function ModeBadgeInfo({ mode, limit, countdown, mounted }: Props
           </div>
         )
       ) : (
-        // Render an empty placeholder so server & client match
         <div className="h-4" />
       )}
     </div>

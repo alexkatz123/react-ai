@@ -42,7 +42,6 @@ export function SignInView({ action }: { action: (formData: FormData) => void })
       setLoading(true);
       await action(fd);
     } finally {
-      // In most cases a redirect happens; this is a safe fallback
       setLoading(false);
     }
   }
@@ -107,6 +106,11 @@ export function SignInView({ action }: { action: (formData: FormData) => void })
             Sign Up
           </Link>
         </p>
+        <div className="mt-3 flex justify-center">
+          <Link href="/generate">
+            <Button variant="ghost" className="text-sm">Prefer to stay logged out</Button>
+          </Link>
+        </div>
       </CardContent>
     </Card>
   );

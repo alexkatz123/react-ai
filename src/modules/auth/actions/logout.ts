@@ -9,13 +9,11 @@ export async function logout() {
     const { account } = await createSessionClient();
     await account.deleteSession("current");
   } catch {
-    // ignore
   }
   try {
     const cookieStore = await cookies();
     cookieStore.set("appwrite-session", "", { expires: new Date(0), path: "/" });
   } catch {
-    // ignore
   }
   redirect("/");
 }

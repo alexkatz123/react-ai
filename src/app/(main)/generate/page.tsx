@@ -1,9 +1,7 @@
-// src/app/(main)/generate/page.tsx
 import "server-only";
-import RoastView from "@/modules/roast/ui/views/roast-view";
+import RoastView from "@/modules/generate/ui/views/roast-view";
 import { roastPicture, type Mode, type RoastResult as ServerRoastResult } from "@/lib/roast";
 
-// UI-facing result shape expected by RoastView
 type UIRoastResult = { ok: boolean; reply?: string; error?: string };
 
 export default function Page() {

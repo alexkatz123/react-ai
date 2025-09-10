@@ -1,4 +1,3 @@
-// src/lib/limit.ts
 import Cookies from "js-cookie";
 
 const LIMIT = parseInt(process.env.NEXT_PUBLIC_LIMIT || "5", 10);
@@ -6,7 +5,7 @@ const LIMIT = parseInt(process.env.NEXT_PUBLIC_LIMIT || "5", 10);
 function getMidnightUTC(): Date {
   const now = new Date();
   const reset = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
-  return reset; // next midnight
+  return reset;
 }
 
 export type LimitState = {
@@ -26,7 +25,6 @@ export function checkLimit(addAttempt = false): LimitState {
     timestamps = [];
   }
 
-  // keep only today’s timestamps
   timestamps = timestamps.filter((t) => t >= resetAt.getTime() - 24 * 60 * 60 * 1000);
 
   let allowed = timestamps.length < LIMIT;
