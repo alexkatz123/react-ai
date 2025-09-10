@@ -24,7 +24,7 @@ Choose your vibe — Roast, Compliment, Random, or let AI Decide — and share t
 - **Frontend**: [Next.js 15](https://nextjs.org/), [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)  
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), custom components  
 - **Backend / Infra**: [Appwrite](https://appwrite.io/) (Auth, DB, Functions, Storage)  
-- **AI**: Serverless Appwrite Function powered by OpenAI/Gemini-style LLMs  
+- **AI**: Serverless Appwrite Function powered by OpenAI
 - **Other**: SSR auth with cookies, image uploads to Appwrite Storage, rate-limiting via client cookies  
 
 ---
@@ -97,7 +97,7 @@ src/
 
 ## 📸 Preview
 
-![ReactAI screenshot](./public/preview.png)
+![ReactAI screenshot](./public/preview.jpg)
 
 ---
 
