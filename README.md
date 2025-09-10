@@ -288,6 +288,19 @@ appwrite push --all
 > * If you changed display names in Console, that’s fine; IDs must still match this file.
 
 ---
+## Varibles to add to the function from appwrite console
+```bash
+CLIENT_API_KEY=
+APPWRITE_PROJECT=
+APPWRITE_ENDPOINT=
+OPENAI_MODEL=
+OPENAI_API_KEY=
+```
+rebuild the function using
+```bash
+appwrite push functions --all
+```
+---
 
 ## ▶️ Run locally
 
