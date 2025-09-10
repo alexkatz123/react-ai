@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔥 ReactAI – Roast / Compliment Bot
 
-## Getting Started
+ReactAI is a fun, image-aware web app that lets you upload a picture and instantly get a **witty roast** or a **genuine compliment**.  
+Choose your vibe — Roast, Compliment, Random, or let AI Decide — and share the results with your friends.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 🖼️ **Image Uploads** – drag & drop or select a photo  
+- 🔥 **Roast Mode** – sarcastic burns and cheeky jokes, always light-hearted  
+- 💖 **Compliment Mode** – warm, genuine compliments that feel natural  
+- 🎲 **Random Mode** – flip a coin, roast or compliment  
+- 🤖 **AI Decide** – the model picks the best response based on context  
+- ⏳ **Daily Limits** – 5 free responses per device per 24h  
+- 📜 **History** – signed-in users can see all their past roasts/compliments  
+- 👤 **Authentication** – sign up, sign in, and keep your history synced  
+- 🌙 **Dark Mode** – theme toggle included  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [Next.js 15](https://nextjs.org/), [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)  
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), custom components  
+- **Backend / Infra**: [Appwrite](https://appwrite.io/) (Auth, DB, Functions, Storage)  
+- **AI**: Serverless Appwrite Function powered by OpenAI/Gemini-style LLMs  
+- **Other**: SSR auth with cookies, image uploads to Appwrite Storage, rate-limiting via client cookies  
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourname/reactai.git
+cd reactai
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun install
+# or
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Configure environment variables
 
-## Learn More
+Create a `.env.local` file in the project root:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+APPWRITE_PROJECT=your_project_id
+APPWRITE_API_KEY=your_api_key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+APPWRITE_BUCKET_ID=your_bucket_id
+APPWRITE_FUNCTION_ID=your_function_id
+APPWRITE_DATABASE_ID=your_database_id
+APPWRITE_COLLECTION_ID=your_collection_id
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ROAST_CLIENT_API_KEY=your_client_key
 
-## Deploy on Vercel
+NEXT_PUBLIC_LIMIT=5
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Run locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+bun dev
+# or
+npm run dev
+```
+
+App will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+  app/                  # Next.js app router pages
+    (main)/roast/       # Roast/compliment main app
+    (main)/history/     # User history
+    sign-in/            # Auth pages
+    sign-up/
+  components/           # Shared UI components
+  lib/                  # Appwrite + utilities
+  modules/
+    roast/              # Roast feature (ui, hooks, utils)
+    auth/               # Auth feature (views, hooks, layouts)
+```
+
+---
+
+## 📸 Preview
+
+![ReactAI screenshot](./public/preview.png)
+
+---
+
+## ⚖️ License
+
+This project is licensed under the MIT License.  
+Feel free to use, remix, and build on top of it.
+
+---
+
+## 🙌 Acknowledgements
+
+- [Appwrite](https://appwrite.io/) for backend infra  
+- [shadcn/ui](https://ui.shadcn.com/) for beautiful UI components  
+- [OpenAI](https://openai.com/) for roasting/complimenting brains  
+- Inspired by the need to have fun with friends’ pictures 😅
