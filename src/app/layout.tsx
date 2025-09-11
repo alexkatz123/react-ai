@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "React AI",
   description: "Roast / Compliment Bot powered by Appwrite & Next.js",
   icons: {
-    icon: "/logo.svg", // or "/favicon.ico" if you have a favicon
+    icon: "/newlogo.svg", // or "/favicon.ico" if you have a favicon
   }
 };
 
